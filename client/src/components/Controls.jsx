@@ -16,6 +16,16 @@ export const Controls = () => {
     setVolume((prevVolume) => (prevVolume === 0 ? 100 : 0));
   };
 
+  const skipForward = () => {
+    const media = document.querySelector("audio");
+    media.currentTime += 10;
+  };
+
+  const skipBackward = () => {
+    const media = document.querySelector("audio");
+    media.currentTime -= 10;
+  };
+
   return (
     <div className="flex justify-center items-center space-x-4 mt-4">
       <button onClick={togglePlayPause}>{isPlaying ? "Pause" : "Play"}</button>
@@ -27,8 +37,8 @@ export const Controls = () => {
         value={volume}
         onChange={handleVolumeChange}
       />
-      <button>Previous</button>
-      <button>Next</button>
+      <button onClick={skipBackward}>Previous</button>
+      <button onClick={skipForward}>Next</button>
     </div>
   );
 };
